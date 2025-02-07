@@ -50,12 +50,12 @@ import DocumentationIcon from './icons/IconDocumentation.vue'
       <legend>Rozłożenie składki na raty:</legend>
       <div>
         <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked/>
-        <label for="installment2">2%</label>
+        <label for="installment2">2 składki</label>
       </div>
 
       <div>
         <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4"/>
-        <label for="installment4">4%</label>
+        <label for="installment4">4 składki</label>
       </div>
 
       <button @click="calculateInstallmentsView">Oblicz raty</button>
