@@ -10,7 +10,7 @@ const getContributionCoefficient = (netPrice: number) => {
 
 const isCarNew = (yearData: number) => {
     const currentYear = new Date().getFullYear();
-    return yearData === currentYear - 2 || yearData === currentYear - 1 || yearData === currentYear;
+    return yearData == currentYear - 2 || yearData == currentYear - 1 || yearData == currentYear;
 };
 
 const isCarTooOld = (yearData: number) => {
@@ -26,7 +26,7 @@ const handleTooOldCar = (yearData: number) => {
     }
 }
 
-const calculateNetPrice = (priceData, isNet) => {
+const calculateNetPrice = (priceData: number, isNet: boolean) => {
     return isNet ? priceData : Math.floor(priceData * 123 / 100);
 };
 

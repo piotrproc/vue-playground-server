@@ -1,21 +1,30 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
-let data = "";
+// let data = "";
+let mydata = "123";
 
-const getInsurance = async (year, price, priceType, gps) => {
+const getInsurance = async (year, price, priceType, isGps) => {
+
+  const yearData = Number(year);
+  const priceData = Number(price);
+  const isNet = priceType == "net";
 
   const {data} = await useFetch('/api/hello', {
     method: 'POST',
     params: {
       // My form data
-      people: "guys"
+      year: yearData,
+      price: priceData,
+      isNet: isNet,
+      isGps: isGps
     }
   });
-  console.log(year);
+  mydata = await data;
   console.log(data);
-}
 
+  return data;
+}
 </script>
 
 <template>
@@ -23,7 +32,7 @@ const getInsurance = async (year, price, priceType, gps) => {
     <template #icon>
       <DocumentationIcon/>
     </template>
-    <template #heading>Application - Car insurance calculator {{ data }}</template>
+    <template #heading>Application - Car insurance calculator {{ mydata }}</template>
 
     <br/>
     <form id="mainForm" onsubmit="return false;">
@@ -55,7 +64,12 @@ const getInsurance = async (year, price, priceType, gps) => {
       <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
       <label for="gps">Pakiet Drive+ (GPS)</label><br>
 
-      <button @click="() => getInsurance(year, price, priceType, gps)">Oblicz</button>
+      <button @click="async () => {
+        const insurance = await getInsurance(year, price, priceType, gps);
+        coefficient = await insurance.value.outcome.coefficient;
+        contribution = await insurance.value.outcome.contribution;
+      }">Oblicz
+      </button>
     </form>
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient">{{ coefficient }}</span></p>
     <p>Wysokość twojej składki to: <span id="contribution">{{ contribution }}</span></p>
