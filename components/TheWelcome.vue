@@ -1,6 +1,20 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
+let data = "";
+
+const getInsurance = async (year, price, priceType, gps) => {
+
+  const {data} = await useFetch('/api/hello', {
+    method: 'POST',
+    params: {
+      // My form data
+      people: "guys"
+    }
+  });
+  console.log(year);
+  console.log(data);
+}
 
 </script>
 
@@ -9,7 +23,7 @@ import DocumentationIcon from './icons/IconDocumentation.vue'
     <template #icon>
       <DocumentationIcon/>
     </template>
-    <template #heading>Application - Car insurance calculator</template>
+    <template #heading>Application - Car insurance calculator {{ data }}</template>
 
     <br/>
     <form id="mainForm" onsubmit="return false;">
@@ -41,7 +55,7 @@ import DocumentationIcon from './icons/IconDocumentation.vue'
       <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
       <label for="gps">Pakiet Drive+ (GPS)</label><br>
 
-      <button @click="calculateInsuranceView">Oblicz</button>
+      <button @click="() => getInsurance(year, price, priceType, gps)">Oblicz</button>
     </form>
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient">{{ coefficient }}</span></p>
     <p>Wysokość twojej składki to: <span id="contribution">{{ contribution }}</span></p>
