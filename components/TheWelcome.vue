@@ -25,6 +25,23 @@ const getInsurance = async (year, price, priceType, isGps) => {
 
   return data;
 }
+
+const getInstallments = async (price, installmentType) => {
+  const are2Installments = installmentType == "2";
+
+  const {data} = await useFetch('/api/hi', {
+    method: 'POST',
+    params: {
+      // My form data
+      price: price,
+      are2Installments: are2Installments
+    }
+  });
+
+  mydata = await data;
+  console.log(data);
+  return data;
+};
 </script>
 
 <template>
@@ -66,8 +83,10 @@ const getInsurance = async (year, price, priceType, isGps) => {
 
       <button @click="async () => {
         const insurance = await getInsurance(year, price, priceType, gps);
-        coefficient = await insurance.value.outcome.coefficient;
-        contribution = await insurance.value.outcome.contribution;
+        coefficient = insurance.value.outcome.coefficient;
+        contribution = insurance.value.outcome.contribution;
+        installmentDivHide = '';
+        installmentPrice = 0;
       }">Oblicz
       </button>
     </form>
@@ -86,7 +105,10 @@ const getInsurance = async (year, price, priceType, isGps) => {
         <label for="installment4">4 składki</label>
       </div>
 
-      <button @click="calculateInstallmentsView">Oblicz raty</button>
+      <button @click="async () => {
+        const insurance = await getInstallments(contribution, installmentType);
+        installmentPrice = insurance.value.outcome;
+      }">Oblicz raty</button>
       <p>Wysokość raty to: <span>{{ installmentPrice }}</span></p>
     </fieldset>
 
@@ -95,7 +117,6 @@ const getInsurance = async (year, price, priceType, isGps) => {
 </template>
 
 <script lang="ts">
-import calculateInsurance from "./insuranceCalculator";
 import calculateInstallments from "./installmentsCalculator";
 
 export default {
@@ -117,17 +138,9 @@ export default {
   methods: {
     calculateInsuranceView() {
       this.error = "";
-      const yearData = Number(this.year);
-      const priceData = Number(this.price);
-      const isNet = this.priceType == "net";
-      const isGps = this.gps;
 
       try {
-        const calculatorOutcome = calculateInsurance(yearData, priceData, isNet, isGps);
-        this.coefficient = calculatorOutcome.coefficient;
-        this.contribution = calculatorOutcome.contribution;
-        this.installmentDivHide = "";
-        this.installmentPrice = 0;
+
       } catch (error) {
         this.error = error.message;
       }
