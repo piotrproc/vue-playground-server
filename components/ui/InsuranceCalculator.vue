@@ -77,6 +77,10 @@ const getInstallments = async (price, installmentType) => {
         if(!error) {
           installmentDivHide = '';
           installmentPrice = 0;
+          errorClass = 'hidden';
+        }
+        else {
+          errorClass = '';
         }
       }">Oblicz
       </Button>
@@ -103,7 +107,7 @@ const getInstallments = async (price, installmentType) => {
       <p>Wysokość raty to: <span>{{ installmentPrice }}</span></p>
     </fieldset>
 
-    <Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge>
+    <div :class="errorClass"><Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge></div>
   </CalculatorView>
 </template>
 
@@ -122,7 +126,8 @@ export default {
       installmentType: "2",
       installmentDivHide: "installmentDivHide",
       installmentPrice: 0,
-      error: ""
+      error: "",
+      errorClass: "hidden"
     };
   }
 };
