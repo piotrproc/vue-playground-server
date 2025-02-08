@@ -6,14 +6,14 @@ export default defineEventHandler((event:any) => {
 
     if(!query.year) {
         return {
-            hello: "world"
+            message: "To use this api pass 4 arguments: year, price isNet and isGps"
         }
     }
 
-    const yearData = query.year;
-    const priceData = query.price;
-    const isNet = query.isNet;
-    const isGps = query.isGps;
+    const yearData = Number(query.year);
+    const priceData = Number(query.price);
+    const isNet = query.isNet === "true";
+    const isGps = query.isGps === "true";
 
     const calculatorOutcome = calculateInsurance(yearData, priceData, isNet, isGps);
 

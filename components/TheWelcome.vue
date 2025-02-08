@@ -1,27 +1,19 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
-// let data = "";
-let mydata = "123";
 
 const getInsurance = async (year, price, priceType, isGps) => {
-
-  const yearData = Number(year);
-  const priceData = Number(price);
   const isNet = priceType == "net";
 
   const {data} = await useFetch('/api/hello', {
     method: 'POST',
     params: {
-      // My form data
-      year: yearData,
-      price: priceData,
-      isNet: isNet,
-      isGps: isGps
+      year,
+      price,
+      isNet,
+      isGps
     }
   });
-  mydata = await data;
-  console.log(data);
 
   return data;
 }
@@ -32,14 +24,11 @@ const getInstallments = async (price, installmentType) => {
   const {data} = await useFetch('/api/hi', {
     method: 'POST',
     params: {
-      // My form data
       price: price,
       are2Installments: are2Installments
     }
   });
 
-  mydata = await data;
-  console.log(data);
   return data;
 };
 </script>
@@ -49,7 +38,7 @@ const getInstallments = async (price, installmentType) => {
     <template #icon>
       <DocumentationIcon/>
     </template>
-    <template #heading>Application - Car insurance calculator {{ mydata }}</template>
+    <template #heading>Application - Car insurance calculator</template>
 
     <br/>
     <form id="mainForm" onsubmit="return false;">
