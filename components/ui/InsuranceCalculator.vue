@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CalculatorView from './CalculatorView.vue'
+import Input from "./input/Input.vue";
 
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
@@ -40,24 +41,24 @@ const getInstallments = async (price, installmentType) => {
     <form id="mainForm" onsubmit="return false;">
       <div>
         <label for="year">Rocznik samochodu</label>
-        <input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required/>
+        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-2xs"/>
       </div>
 
       <div>
         <label for="price">Wartość samochodu</label>
-        <input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required/>
+        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-2xs"/>
       </div>
 
       <fieldset>
         <legend>Rodzaj wartości</legend>
 
         <div>
-          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked/>
+          <Input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
           <label for="net">Netto</label>
         </div>
 
         <div>
-          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross"/>
+          <Input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
           <label for="gross">Brutto</label>
         </div>
 
@@ -84,12 +85,12 @@ const getInstallments = async (price, installmentType) => {
     <fieldset :class="installmentDivHide">
       <legend>Rozłożenie składki na raty:</legend>
       <div>
-        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked/>
+        <Input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
         <label for="installment2">2 składki</label>
       </div>
 
       <div>
-        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4"/>
+        <Input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
         <label for="installment4">4 składki</label>
       </div>
 
