@@ -14,7 +14,20 @@ export default defineEventHandler((event:any) => {
     const isNet = query.isNet === "true";
     const isGps = query.isGps === "true";
 
-    const calculatorOutcome = calculateInsurance(yearData, priceData, isNet, isGps);
+    let calculatorOutcome;
+
+    try {
+        calculatorOutcome = calculateInsurance(yearData, priceData, isNet, isGps);
+    }
+    catch(e) {
+        return {
+            outcome: {
+                coefficient: 0,
+                contribution: 0,
+                error: e.message
+            }
+        }
+    }
 
     return {
         outcome: calculatorOutcome

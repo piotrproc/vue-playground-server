@@ -45,6 +45,7 @@ const calculateInsurance = (yearData: number, priceData: number, isNet: boolean,
     const outcome:any = {};
     outcome.coefficient = coefficient;
     outcome.contribution = contribution;
+    outcome.error = "";
 
     return outcome;
 };

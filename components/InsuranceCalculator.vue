@@ -70,6 +70,7 @@ const getInstallments = async (price, installmentType) => {
         const insurance = await getInsurance(year, price, priceType, gps);
         coefficient = insurance.value.outcome.coefficient;
         contribution = insurance.value.outcome.contribution;
+        error = insurance.value.outcome.error;
         installmentDivHide = '';
         installmentPrice = 0;
       }">Oblicz
@@ -102,7 +103,6 @@ const getInstallments = async (price, installmentType) => {
 </template>
 
 <script lang="ts">
-import calculateInstallments from "../server/installmentsCalculator";
 
 export default {
   name: "InsuranceCalculator",
