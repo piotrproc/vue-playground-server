@@ -37,7 +37,7 @@ const getInstallments = async (price, installmentType) => {
 
 <template>
   <CalculatorView>
-    <template #heading>Application - Car Insurance Calculator</template>
+    <template #heading>Application Car Insurance Calculator</template>
 
     <br/>
     <div :class="errorClass"><Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge></div>
