@@ -124,7 +124,7 @@ export default {
       coefficient: 0,
       contribution: 0,
       installmentType: "2",
-      installmentDivHide: "installmentDivHide",
+      installmentDivHide: "hidden",
       installmentPrice: 0,
       error: "",
       errorClass: "hidden"
@@ -136,10 +136,6 @@ export default {
 <style scoped>
 input[type=number] {
   display: block;
-}
-
-.installmentDivHide {
-  display: none;
 }
 
 .error-message {
