@@ -66,7 +66,7 @@ const getInstallments = async (price, installmentType) => {
       <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
       <label for="gps">Pakiet Drive+ (GPS)</label><br>
 
-      <button @click="async () => {
+      <Button @click="async () => {
         const insurance = await getInsurance(year, price, priceType, gps);
         coefficient = insurance.value.outcome.coefficient;
         contribution = insurance.value.outcome.contribution;
@@ -76,7 +76,7 @@ const getInstallments = async (price, installmentType) => {
           installmentPrice = 0;
         }
       }">Oblicz
-      </button>
+      </Button>
     </form>
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient">{{ coefficient }}</span></p>
     <p>Wysokość twojej składki to: <span id="contribution">{{ contribution }}</span></p>
@@ -93,10 +93,10 @@ const getInstallments = async (price, installmentType) => {
         <label for="installment4">4 składki</label>
       </div>
 
-      <button @click="async () => {
+      <Button @click="async () => {
         const insurance = await getInstallments(contribution, installmentType);
         installmentPrice = insurance.value.outcome;
-      }">Oblicz raty</button>
+      }">Oblicz raty</Button>
       <p>Wysokość raty to: <span>{{ installmentPrice }}</span></p>
     </fieldset>
 
