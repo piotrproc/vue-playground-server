@@ -5,7 +5,7 @@ import DocumentationIcon from './icons/IconDocumentation.vue'
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
 
-  const {data} = await useFetch('/api/hello', {
+  const {data} = await useFetch('/api/calculate-insurance', {
     method: 'POST',
     params: {
       year,
@@ -21,7 +21,7 @@ const getInsurance = async (year, price, priceType, isGps) => {
 const getInstallments = async (price, installmentType) => {
   const are2Installments = installmentType == "2";
 
-  const {data} = await useFetch('/api/hi', {
+  const {data} = await useFetch('/api/calculate-installments', {
     method: 'POST',
     params: {
       price: price,

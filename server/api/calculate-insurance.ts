@@ -1,7 +1,6 @@
 import calculateInsurance from "../../components/insuranceCalculator";
 
 export default defineEventHandler((event:any) => {
-    // console.log(event)
     const query = getQuery(event);
 
     if(!query.year) {
@@ -18,6 +17,6 @@ export default defineEventHandler((event:any) => {
     const calculatorOutcome = calculateInsurance(yearData, priceData, isNet, isGps);
 
     return {
-        outcome: calculatorOutcome,  //event.body.toString();
+        outcome: calculatorOutcome
     }
 })
