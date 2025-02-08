@@ -71,8 +71,10 @@ const getInstallments = async (price, installmentType) => {
         coefficient = insurance.value.outcome.coefficient;
         contribution = insurance.value.outcome.contribution;
         error = insurance.value.outcome.error;
-        installmentDivHide = '';
-        installmentPrice = 0;
+        if(!error) {
+          installmentDivHide = '';
+          installmentPrice = 0;
+        }
       }">Oblicz
       </button>
     </form>
