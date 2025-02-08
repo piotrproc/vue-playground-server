@@ -1,4 +1,4 @@
-import calculateInsurance from "../../components/insuranceCalculator";
+import calculateInsurance from "../insuranceCalculator";
 
 export default defineEventHandler((event:any) => {
     const query = getQuery(event);

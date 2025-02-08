@@ -1,4 +1,4 @@
-import calculateInstallments from "../../components/installmentsCalculator";
+import calculateInstallments from "../installmentsCalculator";
 
 export default defineEventHandler((event:any) => {
     const query = getQuery(event);

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
+import CalulatorView from './CalulatorView.vue'
 
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
@@ -34,10 +33,7 @@ const getInstallments = async (price, installmentType) => {
 </script>
 
 <template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon/>
-    </template>
+  <CalulatorView>
     <template #heading>Application - Car insurance calculator</template>
 
     <br/>
@@ -102,14 +98,14 @@ const getInstallments = async (price, installmentType) => {
     </fieldset>
 
     <p class="error-message">{{ error }}</p>
-  </WelcomeItem>
+  </CalulatorView>
 </template>
 
 <script lang="ts">
-import calculateInstallments from "./installmentsCalculator";
+import calculateInstallments from "../server/installmentsCalculator";
 
 export default {
-  name: "HelloWorld",
+  name: "InsuranceCalculator",
   data() {
     return {
       year: "",
@@ -134,11 +130,6 @@ export default {
         this.error = error.message;
       }
 
-    },
-    calculateInstallmentsView() {
-      const are2Installments = this.installmentType == "2";
-
-      this.installmentPrice = calculateInstallments(this.contribution, are2Installments);
     }
   }
 };
