@@ -2,6 +2,7 @@
 import CalculatorView from './CalculatorView.vue'
 import Input from "./input/Input.vue";
 import Label from "./label/Label.vue";
+import Badge from "./badge/Badge.vue";
 
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
@@ -54,12 +55,12 @@ const getInstallments = async (price, installmentType) => {
         <legend>Rodzaj wartości</legend>
 
         <div>
-          <Input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
+          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
           <Label for="net">Netto</Label>
         </div>
 
         <div>
-          <Input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
+          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
           <Label for="gross">Brutto</Label>
         </div>
 
@@ -86,12 +87,12 @@ const getInstallments = async (price, installmentType) => {
     <fieldset :class="installmentDivHide">
       <legend>Rozłożenie składki na raty:</legend>
       <div>
-        <Input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
+        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
         <Label for="installment2">2 składki</Label>
       </div>
 
       <div>
-        <Input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
+        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
         <Label for="installment4">4 składki</Label>
       </div>
 
@@ -102,7 +103,7 @@ const getInstallments = async (price, installmentType) => {
       <p>Wysokość raty to: <span>{{ installmentPrice }}</span></p>
     </fieldset>
 
-    <p class="error-message">{{ error }}</p>
+    <Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge>
   </CalculatorView>
 </template>
 
@@ -123,18 +124,6 @@ export default {
       installmentPrice: 0,
       error: ""
     };
-  },
-  methods: {
-    calculateInsuranceView() {
-      this.error = "";
-
-      try {
-
-      } catch (error) {
-        this.error = error.message;
-      }
-
-    }
   }
 };
 </script>
@@ -146,5 +135,9 @@ input[type=number] {
 
 .installmentDivHide {
   display: none;
+}
+
+.error-message {
+  width: 300px !important;
 }
 </style>
