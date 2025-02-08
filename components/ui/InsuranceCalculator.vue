@@ -26,8 +26,8 @@ const getInstallments = async (price, installmentType) => {
   const {data} = await useFetch('/api/calculate-installments', {
     method: 'POST',
     params: {
-      price: price,
-      are2Installments: are2Installments
+      price,
+      are2Installments
     }
   });
 
@@ -40,6 +40,7 @@ const getInstallments = async (price, installmentType) => {
     <template #heading>Application - Car insurance calculator</template>
 
     <br/>
+    <div :class="errorClass"><Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge></div>
     <form id="mainForm" onsubmit="return false;">
       <div>
         <Label for="year">Rocznik samochodu</Label>
@@ -56,18 +57,18 @@ const getInstallments = async (price, installmentType) => {
 
         <div>
           <input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
-          <Label for="net">Netto</Label>
+          <Label for="net" class="cursor-pointer">Netto</Label>
         </div>
 
         <div>
           <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
-          <Label for="gross">Brutto</Label>
+          <Label for="gross" class="cursor-pointer">Brutto</Label>
         </div>
 
       </fieldset>
 
       <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
-      <Label for="gps">Pakiet Drive+ (GPS)</Label><br>
+      <Label for="gps" class="cursor-pointer">Pakiet Drive+ (GPS)</Label><br>
 
       <Button @click="async () => {
         const insurance = await getInsurance(year, price, priceType, gps);
@@ -92,12 +93,12 @@ const getInstallments = async (price, installmentType) => {
       <legend>Rozłożenie składki na raty:</legend>
       <div>
         <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
-        <Label for="installment2">2 składki</Label>
+        <Label for="installment2" class="cursor-pointer">2 składki</Label>
       </div>
 
       <div>
         <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
-        <Label for="installment4">4 składki</Label>
+        <Label for="installment4" class="cursor-pointer">4 składki</Label>
       </div>
 
       <Button @click="async () => {
@@ -106,8 +107,6 @@ const getInstallments = async (price, installmentType) => {
       }">Oblicz raty</Button>
       <p>Wysokość raty to: <span>{{ installmentPrice }}</span></p>
     </fieldset>
-
-    <div :class="errorClass"><Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge></div>
   </CalculatorView>
 </template>
 
