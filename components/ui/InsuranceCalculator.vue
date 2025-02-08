@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CalculatorView from './CalculatorView.vue'
 import Input from "./input/Input.vue";
+import Label from "./label/Label.vue";
 
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
@@ -40,12 +41,12 @@ const getInstallments = async (price, installmentType) => {
     <br/>
     <form id="mainForm" onsubmit="return false;">
       <div>
-        <label for="year">Rocznik samochodu</label>
+        <Label for="year">Rocznik samochodu</Label>
         <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-2xs"/>
       </div>
 
       <div>
-        <label for="price">Wartość samochodu</label>
+        <Label for="price">Wartość samochodu</Label>
         <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-2xs"/>
       </div>
 
@@ -54,18 +55,18 @@ const getInstallments = async (price, installmentType) => {
 
         <div>
           <Input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
-          <label for="net">Netto</label>
+          <Label for="net">Netto</Label>
         </div>
 
         <div>
           <Input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
-          <label for="gross">Brutto</label>
+          <Label for="gross">Brutto</Label>
         </div>
 
       </fieldset>
 
       <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
-      <label for="gps">Pakiet Drive+ (GPS)</label><br>
+      <Label for="gps">Pakiet Drive+ (GPS)</Label><br>
 
       <Button @click="async () => {
         const insurance = await getInsurance(year, price, priceType, gps);
@@ -86,12 +87,12 @@ const getInstallments = async (price, installmentType) => {
       <legend>Rozłożenie składki na raty:</legend>
       <div>
         <Input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
-        <label for="installment2">2 składki</label>
+        <Label for="installment2">2 składki</Label>
       </div>
 
       <div>
         <Input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
-        <label for="installment4">4 składki</label>
+        <Label for="installment4">4 składki</Label>
       </div>
 
       <Button @click="async () => {
