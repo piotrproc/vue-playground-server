@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CalulatorView from './CalulatorView.vue'
+import CalculatorView from './CalculatorView.vue'
 
 const getInsurance = async (year, price, priceType, isGps) => {
   const isNet = priceType == "net";
@@ -33,7 +33,7 @@ const getInstallments = async (price, installmentType) => {
 </script>
 
 <template>
-  <CalulatorView>
+  <CalculatorView>
     <template #heading>Application - Car insurance calculator</template>
 
     <br/>
@@ -98,7 +98,7 @@ const getInstallments = async (price, installmentType) => {
     </fieldset>
 
     <p class="error-message">{{ error }}</p>
-  </CalulatorView>
+  </CalculatorView>
 </template>
 
 <script lang="ts">
