@@ -90,7 +90,7 @@ const getInstallments = async (price, installmentType) => {
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient" class="font-bold">{{ coefficient }}</span></p>
     <p>Wysokość twojej składki to: <span id="contribution" class="font-bold">{{ contribution }}</span></p>
 
-    <fieldset :class="installmentDivHide">
+    <fieldset :class="installmentDivHide" class="my-3">
       <legend>Rozłożenie składki na raty:</legend>
       <div>
         <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked/>
