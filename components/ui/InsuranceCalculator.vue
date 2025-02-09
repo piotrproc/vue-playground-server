@@ -56,12 +56,12 @@ const getInstallments = async (price, installmentType) => {
         <legend>Rodzaj wartości</legend>
 
         <div>
-          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="w-3xs inline h-auto"/>
+          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked/>
           <Label for="net" class="cursor-pointer">Netto</Label>
         </div>
 
         <div>
-          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="w-3xs inline h-auto"/>
+          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" />
           <Label for="gross" class="cursor-pointer">Brutto</Label>
         </div>
 
@@ -93,12 +93,12 @@ const getInstallments = async (price, installmentType) => {
     <fieldset :class="installmentDivHide">
       <legend>Rozłożenie składki na raty:</legend>
       <div>
-        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="w-3xs inline h-auto"/>
+        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked/>
         <Label for="installment2" class="cursor-pointer">2 składki</Label>
       </div>
 
       <div>
-        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="w-3xs inline h-auto"/>
+        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4"/>
         <Label for="installment4" class="cursor-pointer">4 składki</Label>
       </div>
 
