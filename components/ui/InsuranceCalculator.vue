@@ -55,20 +55,22 @@ const getInstallments = async (price, installmentType) => {
       <fieldset>
         <legend>Rodzaj wartości</legend>
 
-        <div>
-          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked/>
+        <div class="m-2">
+          <input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="mr-2"/>
           <Label for="net" class="cursor-pointer">Netto</Label>
         </div>
 
-        <div>
-          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" />
+        <div class="m-2">
+          <input v-model="priceType" type="radio" id="gross" name="gross" value="gross" class="mr-2"/>
           <Label for="gross" class="cursor-pointer">Brutto</Label>
         </div>
 
       </fieldset>
 
-      <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked>
-      <Label for="gps" class="cursor-pointer">Pakiet Drive+ (GPS)</Label><br>
+      <div class="m-1">
+        <input v-model="gps" type="checkbox" id="gps" name="gps" value="GPS" checked class="mr-2">
+        <Label for="gps" class="cursor-pointer">Pakiet Drive+ (GPS)</Label><br>
+      </div>
 
       <Button @click="async () => {
         const insurance = await getInsurance(year, price, priceType, gps);
@@ -92,13 +94,13 @@ const getInstallments = async (price, installmentType) => {
 
     <fieldset :class="installmentDivHide" class="my-3">
       <legend>Rozłożenie składki na raty:</legend>
-      <div>
-        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked/>
+      <div class="m-2">
+        <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="mr-2"/>
         <Label for="installment2" class="cursor-pointer">2 składki</Label>
       </div>
 
-      <div>
-        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4"/>
+      <div class="m-2">
+        <input v-model="installmentType" type="radio" id="installment4" name="installment4" value="4" class="mr-2"/>
         <Label for="installment4" class="cursor-pointer">4 składki</Label>
       </div>
 
