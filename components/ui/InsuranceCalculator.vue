@@ -83,9 +83,10 @@ const getInstallments = async (price, installmentType) => {
           errorClass = 'hidden';
         }
         else {
+          installmentDivHide = 'hidden';
           errorClass = '';
-          installmentPrice = 0;
         }
+        installmentPrice = 0;
       }" class="mx-12 my-5">Oblicz
       </Button>
     </form>
