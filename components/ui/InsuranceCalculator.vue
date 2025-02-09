@@ -40,16 +40,16 @@ const getInstallments = async (price, installmentType) => {
     <template #heading>Application - Car Insurance Calculator</template>
 
     <br/>
-    <div :class="errorClass"><Badge class="error-message inline-block" variant="destructive">{{ error }}</Badge></div>
+    <div :class="errorClass"><Badge class="error-message inline-block rounded-sm w-[30%]" variant="destructive">{{ error }}</Badge></div>
     <form id="mainForm" onsubmit="return false;">
       <div>
         <Label for="year">Rocznik samochodu</Label>
-        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-2xs"/>
+        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-2xs block"/>
       </div>
 
       <div>
         <Label for="price">Wartość samochodu</Label>
-        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-2xs"/>
+        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-2xs block"/>
       </div>
 
       <fieldset>
@@ -131,13 +131,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-input[type=number] {
-  display: block;
-}
-
-.error-message {
-  width: 300px !important;
-}
-</style>
