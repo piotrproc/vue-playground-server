@@ -87,7 +87,7 @@ const getInstallments = async (price, installmentType) => {
           errorClass = '';
         }
         installmentPrice = 0;
-      }" class="mx-12 my-5">Oblicz
+      }" class="my-5">Oblicz
       </Button>
     </form>
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient" class="font-bold">{{ coefficient }}</span></p>
@@ -108,7 +108,7 @@ const getInstallments = async (price, installmentType) => {
       <Button @click="async () => {
         const insurance = await getInstallments(contribution, installmentType);
         installmentPrice = insurance.value.outcome;
-      }" class="mx-12 my-5">Oblicz raty</Button>
+      }" class="my-5">Oblicz raty</Button>
       <p>Wysokość raty to: <span id="installmentPrice" class="font-bold">{{ installmentPrice }}</span></p>
     </fieldset>
   </CalculatorView>
