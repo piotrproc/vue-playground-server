@@ -40,7 +40,7 @@ const getInstallments = async (price, installmentType) => {
     <template #heading>Application - Car Insurance Calculator</template>
 
     <br/>
-    <div :class="errorClass"><Badge class="error-message inline-block rounded-sm w-[30%]" variant="destructive">{{ error }}</Badge></div>
+    <div :class="errorClass"><Badge class="error-message inline-block rounded-sm w-[35%]" variant="destructive">{{ error }}</Badge></div>
     <form id="mainForm" onsubmit="return false;">
       <div>
         <Label for="year">Rocznik samochodu</Label>
