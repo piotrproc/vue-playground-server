@@ -44,12 +44,12 @@ const getInstallments = async (price, installmentType) => {
     <form id="mainForm" onsubmit="return false;">
       <div>
         <Label for="year">Rocznik samochodu</Label>
-        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-2xs block"/>
+        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-[35%] block"/>
       </div>
 
       <div>
         <Label for="price">Wartość samochodu</Label>
-        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-2xs block"/>
+        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-[35%] block"/>
       </div>
 
       <fieldset>
