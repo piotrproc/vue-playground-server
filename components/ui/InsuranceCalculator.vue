@@ -141,4 +141,9 @@ export default {
     width: 100%;
   }
 }
+@media only screen and (min-width: 1000px) {
+  input[type=number], .error-message {
+    width: 20%;
+  }
+}
 </style>
