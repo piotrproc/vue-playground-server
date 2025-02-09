@@ -135,3 +135,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+@media only screen and (max-width: 600px) {
+  input[type=number], .error-message {
+    width: 100%;
+  }
+}
+</style>
