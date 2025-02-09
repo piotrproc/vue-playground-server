@@ -87,7 +87,7 @@ const getInstallments = async (price, installmentType) => {
           errorClass = '';
         }
         installmentPrice = 0;
-      }" class="my-5">Oblicz
+      }" class="my-5">Oblicz składkę
       </Button>
     </form>
     <p id="coefficientDiv">Twój współczynnik to: <span id="coefficient" class="font-bold">{{ coefficient }}</span></p>
