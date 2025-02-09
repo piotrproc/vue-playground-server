@@ -44,16 +44,16 @@ const getInstallments = async (price, installmentType) => {
     <form id="mainForm" onsubmit="return false;">
       <div>
         <Label for="year">Rocznik samochodu</Label>
-        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-[35%] block"/>
+        <Input v-model="year" id="year" name="year" type="number" placeholder="Podaj rocznik samochodu" required class="w-[35%] block mb-3 mx-auto"/>
       </div>
 
       <div>
         <Label for="price">Wartość samochodu</Label>
-        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-[35%] block"/>
+        <Input v-model="price" id="price" name="price" type="number" placeholder="Podaj wartość samochodu" required class="w-[35%] block mb-3 mx-auto"/>
       </div>
 
       <fieldset>
-        <legend>Rodzaj wartości</legend>
+        <div>Rodzaj wartości</div>
 
         <div class="m-2">
           <input v-model="priceType" type="radio" id="net" name="net" value="net" checked class="mr-2"/>
@@ -94,7 +94,7 @@ const getInstallments = async (price, installmentType) => {
     <p>Wysokość twojej składki to: <span id="contribution" class="font-bold">{{ contribution }}</span></p>
 
     <fieldset :class="installmentDivHide" class="my-3">
-      <legend>Rozłożenie składki na raty:</legend>
+      <div>Rozłożenie składki na raty:</div>
       <div class="m-2">
         <input v-model="installmentType" type="radio" id="installment2" name="installment2" value="2" checked class="mr-2"/>
         <Label for="installment2" class="cursor-pointer">2 składki</Label>
